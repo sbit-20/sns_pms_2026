@@ -9,21 +9,21 @@ if (!$id) {
 }
 
 // 1. Fetch Client Details
-$client = $pdo->query("SELECT * FROM clients WHERE client_id = $id")->fetch();
+    $client = $pdo->query("SELECT * FROM clients WHERE client_id = $id")->fetch();
 
 // 2. Fetch Projects (Now includes documentation columns directly)
-$projects = $pdo->query("SELECT * FROM projects WHERE client_id = $id")->fetchAll();
+    $projects = $pdo->query("SELECT * FROM projects WHERE client_id = $id")->fetchAll();
 
 // 3. Fetch SMM Services
-$smm = $pdo->query("SELECT * FROM smm_services WHERE client_id = $id")->fetchAll();
+   $smm = $pdo->query("SELECT * FROM smm_services WHERE client_id = $id")->fetchAll();
 
 // 4. Fetch Billing History
-$sql_inv = "SELECT i.*, r.receipt_id 
+   $sql_inv = "SELECT i.*, r.receipt_id 
             FROM invoices i 
             LEFT JOIN receipts r ON i.invoice_id = r.invoice_id
             WHERE i.client_id = $id 
             ORDER BY i.invoice_id DESC";
-$invoices = $pdo->query($sql_inv)->fetchAll();
+    $invoices = $pdo->query($sql_inv)->fetchAll();
 
 include_once '../../includes/layout_header.php';
 ?>
@@ -45,7 +45,10 @@ include_once '../../includes/layout_header.php';
                     </div>
                     
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-slate-500">
-                        
+                        <div class="flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-location-dot text-slate-300"></i>
+                            <span class="truncate max-w-xs"><?= $client['address'] ?: 'No Address' ?></span>
+                        </div>
                         <div class="flex items-center gap-2 text-sm">
                             <i class="fa-solid fa-phone text-slate-300"></i>
                             <span class="font-semibold text-slate-700"><?= $client['contact_number'] ?></span>
@@ -54,10 +57,6 @@ include_once '../../includes/layout_header.php';
                         <div class="flex items-center gap-2 text-sm">
                             <i class="fa-solid fa-mobile-screen text-slate-300"></i>
                             <span class="font-semibold text-slate-700"><?= $client['alt_contact_number'] ?></span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm">
-                            <i class="fa-solid fa-location-dot text-slate-300"></i>
-                            <span class="truncate max-w-xs"><?= $client['address'] ?: 'No Address' ?></span>
                         </div>
                         <?php endif; ?>
                     </div>
