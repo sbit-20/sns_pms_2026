@@ -75,7 +75,50 @@ $is_invoice_module = (strpos($current_path, 'invoices/') !== false || strpos($cu
             </div>
         </div>
         
-        <nav class="flex-1 py-6 px-3 space-y-1.5 overflow-y-auto">
+        <!-- <nav class="flex-1 py-6 px-3 space-y-1.5 overflow-y-auto">
+            <div class="px-3 mb-2 mt-1 text-[10px] font-bold uppercase tracking-wider text-stone-400 group-label">Overview</div>
+            <a href="<?= BASE_URL ?>dashboard.php" class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= isActive('dashboard.php') ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
+                <i class="fa-solid fa-chart-pie w-6 text-center transition-colors <?= isActive('dashboard.php') ? 'text-amber-400' : 'group-hover:text-stone-800' ?>"></i>
+                <span class="ml-3 nav-label">Dashboard</span>
+            </a>
+            <a href="<?= BASE_URL ?>modules/reminders/reminders.php" class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= isActive('reminders.php') ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
+                <i class="fa-regular fa-bell w-6 text-center transition-colors <?= isActive('reminders.php') ? 'text-amber-400' : 'group-hover:text-stone-800' ?>"></i>
+                <span class="ml-3 nav-label">Reminders</span>
+            </a>
+
+            <div class="px-3 mb-2 mt-6 text-[10px] font-bold uppercase tracking-wider text-stone-400 group-label">Business</div>
+            <a href="<?= BASE_URL ?>modules/clients/clients.php" class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= isActive('clients.php') ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
+                <i class="fa-solid fa-users w-6 text-center transition-colors <?= isActive('clients.php') ? 'text-amber-400' : 'group-hover:text-stone-800' ?>"></i>
+                <span class="ml-3 nav-label">Client Directory</span>
+            </a>
+            
+            <div class="relative">
+                <button onclick="toggleSubmenu('invoiceSubmenu')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= $is_invoice_module ? 'bg-stone-100 text-stone-900' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-file-invoice-dollar w-6 text-center transition-colors <?= $is_invoice_module ? 'text-amber-500' : 'group-hover:text-stone-800' ?>"></i>
+                        <span class="ml-3 nav-label">Invoices</span>
+                    </div>
+                    <i id="invoiceArrow" class="fa-solid fa-chevron-down text-[10px] chevron-icon transition-transform duration-300 opacity-50 <?= $is_invoice_module ? 'rotate-180' : '' ?>"></i>
+                </button>
+                
+                <div id="invoiceSubmenu" class="submenu-container <?= $is_invoice_module ? '' : 'hidden' ?> pl-9 pr-2 mt-1 space-y-1 relative">
+                    <div class="absolute left-[1.65rem] top-0 bottom-4 w-px bg-stone-200"></div>
+                    
+                    <a href="<?= BASE_URL ?>modules/invoices/invoice_list.php?origin=INHOUSE" class="relative block py-2 pl-4 rounded-lg text-xs font-medium transition-colors hover:text-stone-900 <?= (isActive('invoice_list.php') && isset($_GET['origin']) && $_GET['origin']=='INHOUSE') ? 'text-amber-600 bg-amber-50' : 'text-stone-500' ?>">
+                         Inhouse Records
+                    </a>
+                    <a href="<?= BASE_URL ?>modules/invoices/invoice_list.php?origin=OUTHOUSE" class="relative block py-2 pl-4 rounded-lg text-xs font-medium transition-colors hover:text-stone-900 <?= (isActive('invoice_list.php') && isset($_GET['origin']) && $_GET['origin']=='OUTHOUSE') ? 'text-amber-600 bg-amber-50' : 'text-stone-500' ?>">
+                         Outhouse Records
+                    </a>
+                </div>
+            </div>
+
+            <a href="<?= BASE_URL ?>modules/projects/add_entry.php" class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= isActive('add_entry.php') ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
+                <i class="fa-solid fa-plus-circle w-6 text-center transition-colors <?= isActive('add_entry.php') ? 'text-amber-400' : 'group-hover:text-stone-800' ?>"></i>
+                <span class="ml-3 nav-label">New Entry</span>
+            </a>
+        </nav> -->
+<nav class="flex-1 py-6 px-3 space-y-1.5 overflow-y-auto">
             <div class="px-3 mb-2 mt-1 text-[10px] font-bold uppercase tracking-wider text-stone-400 group-label">Overview</div>
             <a href="<?= BASE_URL ?>dashboard.php" class="nav-item flex items-center px-3 py-2.5 rounded-xl transition-all duration-200 group font-medium text-sm <?= isActive('dashboard.php') ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900' ?>">
                 <i class="fa-solid fa-chart-pie w-6 text-center transition-colors <?= isActive('dashboard.php') ? 'text-amber-400' : 'group-hover:text-stone-800' ?>"></i>
