@@ -45,10 +45,7 @@ include_once '../../includes/layout_header.php';
                     </div>
                     
                     <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-slate-500">
-                        <div class="flex items-center gap-2 text-sm">
-                            <i class="fa-solid fa-location-dot text-slate-300"></i>
-                            <span class="truncate max-w-xs"><?= $client['address'] ?: 'No Address' ?></span>
-                        </div>
+                        
                         <div class="flex items-center gap-2 text-sm">
                             <i class="fa-solid fa-phone text-slate-300"></i>
                             <span class="font-semibold text-slate-700"><?= $client['contact_number'] ?></span>
@@ -57,6 +54,10 @@ include_once '../../includes/layout_header.php';
                         <div class="flex items-center gap-2 text-sm">
                             <i class="fa-solid fa-mobile-screen text-slate-300"></i>
                             <span class="font-semibold text-slate-700"><?= $client['alt_contact_number'] ?></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-location-dot text-slate-300"></i>
+                            <span class="truncate max-w-xs"><?= $client['address'] ?: 'No Address' ?></span>
                         </div>
                         <?php endif; ?>
                     </div>
