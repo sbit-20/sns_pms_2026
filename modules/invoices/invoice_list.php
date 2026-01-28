@@ -15,6 +15,17 @@ $theme_border = ($origin == 'INHOUSE') ? 'focus:border-emerald-500' : 'focus:bor
 $theme_ring = ($origin == 'INHOUSE') ? 'focus:ring-emerald-500/10' : 'focus:ring-blue-500/10';
 
 // SQL: LEFT JOIN receipts to check if payment exists
+// $sql = "SELECT i.*, c.client_name, c.client_origin, r.receipt_id 
+//         FROM invoices i 
+//         JOIN clients c ON i.client_id = c.client_id 
+//         LEFT JOIN receipts r ON i.invoice_id = r.invoice_id
+//         WHERE c.client_origin = ? 
+//         ORDER BY i.invoice_id DESC";
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([$origin]);
+// $invoices = $stmt->fetchAll();
+
+
 $sql = "SELECT i.*, c.client_name, c.client_origin, r.receipt_id 
         FROM invoices i 
         JOIN clients c ON i.client_id = c.client_id 
@@ -24,7 +35,6 @@ $sql = "SELECT i.*, c.client_name, c.client_origin, r.receipt_id
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$origin]);
 $invoices = $stmt->fetchAll();
-
 // Calculate Totals for quick stats
 $total_inv = count($invoices);
 $total_amt = 0;
