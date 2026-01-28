@@ -9,12 +9,18 @@ $stmt = $pdo->query("CALL GetDashboardData()");
 // 1. Fetch Stats
 $stats_raw = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// $stats = array(
+//     'clients'  => (isset($stats_raw['total_clients'])) ? $stats_raw['total_clients'] : 0,
+//     'projects' => (isset($stats_raw['total_projects'])) ? $stats_raw['total_projects'] : 0,
+//     'smm'      => (isset($stats_raw['total_smm'])) ? $stats_raw['total_smm'] : 0
+// );
+
+
 $stats = array(
     'clients'  => (isset($stats_raw['total_clients'])) ? $stats_raw['total_clients'] : 0,
     'projects' => (isset($stats_raw['total_projects'])) ? $stats_raw['total_projects'] : 0,
     'smm'      => (isset($stats_raw['total_smm'])) ? $stats_raw['total_smm'] : 0
 );
-
 // 2. Fetch Active Reminders
 $stmt->nextRowset();
 $reminders = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,9 +38,10 @@ $stmt->nextRowset();
 $inv_projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 6. Recent SMM Invoices
+// $stmt->nextRowset();
+// $inv_smm = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->nextRowset();
 $inv_smm = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 $stmt->closeCursor();
 ?>
 
