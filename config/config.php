@@ -37,7 +37,9 @@ try {
     ];
     foreach($updates as $tbl => $cols) {
         foreach($cols as $col => $def) {
+            
             $check = $pdo->query("SHOW COLUMNS FROM $tbl LIKE '$col'");
+            
             if($check->rowCount() == 0) $pdo->exec("ALTER TABLE $tbl ADD COLUMN $col $def");
         }
     }
